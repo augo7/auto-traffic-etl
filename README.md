@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 🚦 Auto Traffic ETL: Scalable Pipeline with Python & BigQuery
 This project showcases a real-world ETL (Extract, Transform, Load) pipeline that ingests, cleans, and analyzes public traffic and urban mobility data. By integrating open data sources (such as Austin Open Data, NYC Mobility APIs, or Google Maps Traffic Layer) with Python’s robust data processing capabilities and Google BigQuery’s scalable cloud infrastructure, this pipeline is purpose-built for uncovering traffic patterns, bottlenecks, and regional mobility trends.
 
