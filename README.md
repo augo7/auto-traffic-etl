@@ -1,68 +1,80 @@
-🚦 Traffic Data Pipeline: Automated ETL with Python & BigQuery
-This project delivers a scalable, automated ETL (Extract, Transform, Load) pipeline for collecting, processing, and analyzing real-time urban traffic data. Using public mobility APIs, Python’s data stack, and Google BigQuery, the pipeline is designed to reflect real-world data engineering practices and support time-based traffic analytics at city scale.
+🚦 Traffic ETL Pipeline – BigQuery Automation
+This project automates the extraction, transformation, and loading (ETL) of real-time or historical traffic data from public APIs into a Google BigQuery dataset. It’s built as a professional-grade portfolio project to showcase data engineering, automation, and traffic analytics skills.
 
-By incorporating API integration, automated scheduling, and cloud warehousing, this project enables streamlined data ingestion and intelligent traffic insights across geographic and temporal dimensions.
+🎯 Project Objectives
+Build an automated ETL pipeline using Python
 
-🔍 Project Highlights
+Extract traffic or urban mobility data from:
 
-API Integration & Data Extraction:
-Connects to open mobility APIs (e.g. Austin Open Data, NYC Open Data) to pull traffic data in structured formats (JSON/CSV), with flexibility for expanding to additional urban regions.
+Austin Open Data
 
-Data Transformation:
-Cleans and organizes traffic data using Python and Pandas—handling missing timestamps, normalizing time zones, and engineering features like time of day, weekday, and geographic zones.
+NYC Open Data
 
-Cloud Data Warehousing:
-Loads the transformed datasets into Google BigQuery, enabling fast, scalable querying for trend analysis and congestion insights.
+Google Maps Traffic Layer
 
-Scheduling & Automation:
-Implements a scheduled update system using GitHub Actions (or cron), automating daily or weekly pulls and refreshes to keep BigQuery tables up-to-date without manual intervention.
+Clean and transform the data using pandas
 
-Analytical Insight:
-Supports complex SQL queries to identify peak congestion windows, compare traffic volumes across neighborhoods, and track changes in urban flow over time using window functions and ranking.
+Load cleaned data into Google BigQuery
 
-🛠️ Technologies & Tools
+Set up daily or weekly automatic data refreshes using GitHub Actions or a scheduled script
 
-Technology	Purpose
-Python	Core language for data ingestion and processing
-Pandas	Data wrangling and time-based feature engineering
-Public Traffic APIs	Sources of real-time or historical traffic data
-Google BigQuery	Cloud-scale storage and SQL analytics
-GitHub Actions	CI/CD and scheduled job automation
-.env + dotenv	Secure management of API keys and configs
-Git & GitHub	Version control and collaboration
+🔁 ETL Structure
+1. Extract
+Connect to public traffic APIs
 
-📂 Project Structure
+Pull data in JSON or CSV format
 
-extract_traffic.py — Connects to the selected public traffic API(s) and retrieves data
+(Optionally) store raw data locally or in cloud storage
 
-transform_data.py — Cleans, processes, and reshapes raw data using Pandas
+2. Transform
+Use Python + pandas to:
 
-load_to_bigquery.py — Uploads the final dataset to Google BigQuery
+Handle missing timestamps or GPS data
 
-.env — Secure file storing API credentials (excluded from GitHub)
+Normalize time zones and extract day/time
 
-.gitignore — Prevents sensitive or unnecessary files from being committed
+Group by region or time intervals
 
-README.md — Full documentation for understanding and replicating the project
+(Optional) Cluster or geotag high-traffic zones
 
-🚀 How to Use This Project
+3. Load
+Upload cleaned datasets into a BigQuery table
 
-Clone the repository to your local machine.
+Append or overwrite data based on freshness
 
-Set up your .env file with any required API keys (if applicable).
+📊 Data Analysis Goals
+Use BigQuery SQL to explore and answer:
 
-Install dependencies:
+What are the peak traffic times by area or day of the week?
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Run the ETL pipeline sequentially:
+How does congestion evolve over time?
 
-bash
-Copy
-Edit
-python extract_traffic.py  
-python transform_data.py  
-python load_to_bigquery.py
-Use BigQuery SQL to analyze traffic patterns, identify high-traffic regions, or visualize trends across time windows.
+Which intersections consistently experience high volume?
+
+Leverage SQL window functions for:
+
+Rolling averages
+
+Percent change
+
+Traffic volume rankings
+
+⏱️ Bonus: Scheduled Automation
+Set up a scheduled process to:
+
+Fetch new traffic data on a daily or weekly basis
+
+Automatically transform and load into BigQuery
+
+Tools: GitHub Actions or Python + cron
+
+🧰 Tech Stack
+Python (pandas, requests, google-cloud-bigquery)
+
+Google BigQuery
+
+GitHub Actions (CI/CD automation)
+
+Public traffic data in JSON or CSV
+
+
