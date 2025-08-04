@@ -1,0 +1,34 @@
+name: Daily Traffic Pull
+
+on: 
+  schedule:
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Extract Step
+        run: |
+          python extract_data.py
+
+      - name: Run Transform Step
+        run: |
+          python transform_data.py
+
+      - name: Run load Step
+        run: |
+          python load_to_bigquery.py
+  
