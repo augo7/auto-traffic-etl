@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 # Load your JSON file (replace 'traffic_data.json' with your filename)
-df = pd.read_json('traffic_data.json')
+df = pd.read_json('traffic_data.json', lines=True)
 
 # Handle missing timestamps or location data
 df = df.dropna(subset=['timestamp', 'latitude', 'longitude'])
@@ -32,4 +32,4 @@ df['zone_cluster'] = kmeans.labels_
 df.to_csv('traffic_data_cleaned.csv', index=False)
 grouped.to_csv('traffic_data_grouped.csv', index=False)
 
-
+print("✅ Saved grouped traffic data to traffic_data_grouped.csv")
