@@ -20,15 +20,11 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run Extract Step
+      - name: Run ETL Steps
         run: |
+          cd auto-traffic-etl
           python extract_data.py
-
-      - name: Run Transform Step
-        run: |
           python transform_data.py
-
-      - name: Run load Step
-        run: |
           python load_to_bigquery.py
+
   
