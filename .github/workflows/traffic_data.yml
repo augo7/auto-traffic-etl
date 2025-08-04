@@ -21,10 +21,13 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run ETL Steps
+        env:
+          TRAFFIC_API_KEY: ${{ secrets.TRAFFIC_API_KEY }}
         run: |
           cd auto-traffic-etl
           python extract_data.py
           python transform_data.py
           python load_to_bigquery.py
+
 
   
