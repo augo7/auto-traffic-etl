@@ -2,7 +2,7 @@ name: Daily Traffic Pull
 
 on: 
   schedule:
-    - cron: '0 14 * * *'  # Runs daily at 14:00 UTC (9:00 AM CDT)
+    - cron: '0 14 * * *'  # Runs daily at 9 AM CDT
   workflow_dispatch:
 
 jobs:
@@ -22,10 +22,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r auto-traffic-etl/requirements.txt
 
-      - name: Setup GCP credentials
+      - name: Set up Google Cloud credentials
         run: echo "${{ secrets.GCP_CREDENTIALS }}" > ${{ runner.temp }}/gcp-key.json
 
-      - name: Set GOOGLE_APPLICATION_CREDENTIALS
+      - name: Set GOOGLE_APPLICATION_CREDENTIALS env variable
         run: echo "GOOGLE_APPLICATION_CREDENTIALS=${{ runner.temp }}/gcp-key.json" >> $GITHUB_ENV
 
       - name: Run ETL Pipeline
