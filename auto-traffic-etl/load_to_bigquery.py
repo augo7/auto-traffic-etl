@@ -1,12 +1,17 @@
 import os
 from google.cloud import bigquery
-from transform_data import df
+import pandas as pd
 
 client = bigquery.Client()
 
-# Define your BigQuery dataset and table
-dataset_id = 'your_dataset_id'
-table_id = 'your_table_id'
+dataset_id = 'i35_traffic'  
+table_id = 'flow_segments'      
+
+# Read the CSV saved by transform step
+df = pd.read_csv('traffic_data_cleaned.csv')
 
 # Load DataFrame to BigQuery
 job = client.load_table_from_dataframe(df, f"{dataset_id}.{table_id}")
+job.result()  # Wait for job to complete
+
+print(f"✅ Loaded {job.output_rows} rows into {dataset_id}.{table_id}")

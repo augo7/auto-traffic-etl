@@ -1,0 +1,8 @@
+segment_label,hour,current_speed,free_flow_speed,confidence
+I-35 Downtown,20,35.0,35.0,1.0
+I-35 Northbound Mid,20,45.0,45.0,1.0
+I-35 Northbound at North,20,67.0,67.0,1.0
+I-35 Southbound Downtown,20,14.0,14.0,1.0
+I-35 Southbound End,20,89.0,89.0,1.0
+I-35 Southbound Mid,20,83.0,103.0,1.0
+I-35 Southbound Near Airport,20,55.0,67.0,1.0
